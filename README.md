@@ -80,7 +80,7 @@ __Template__: [factory.tpl.js](templates/factory.tpl.js)
 #### `yo angular-nmi:module`
 __Generates__: An AngularJS Module.  
 __Arguments__: The name of the Module to create.    
-__Template__: [module.tpl.js](templates/nodule.tpl.js)
+__Template__: [module.tpl.js](templates/module.tpl.js)
 
 *Examples*:
 
@@ -124,6 +124,7 @@ __Arguments__: The name of the Module, Constant, and Route to create.
 | Generator | Generates file | Module's name |
 | --------- | -------------- | ------------- |
 | `yo angular-nmi:feature app.contacts` | src/app/contacts.module.js, src/app/contacts.constant.js, src/app/contacts.route.js | app.contacts |
+| `yo angular-nmi:feature app.profile-header` | src/app/profile-header.module.js, src/app/profile-header.constant.js, src/app/profile-header.route.js | app.profile-header |
 
 #### `yo angular-nmi:vc`
 __Generates__: A View and a Controller.  
