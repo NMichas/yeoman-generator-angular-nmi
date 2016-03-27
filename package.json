@@ -1,0 +1,26 @@
+{
+  "name": "generator-angular-nmi",
+  "version": "1.0.0",
+  "description": "An opinionated generator to create various AngularJS resources.",
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "author": "Nassos A. Michas <nassosmichas@me.com>",
+  "license": "EUPL-1.1",
+  "dependencies": {
+    "colog": "^1.0.4",
+    "mkdirp": "^0.5.1",
+    "yeoman-generator": "^0.20.2"
+  },
+  "files": [
+    "app"
+  ],
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "mocha-sinon": "^1.1.5",
+    "sinon": "^1.17.3",
+    "temp": "^0.8.3",
+    "yeoman-assert": "^2.1.1"
+  }
+}
