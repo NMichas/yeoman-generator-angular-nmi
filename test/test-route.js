@@ -1,33 +1,15 @@
 "use strict";
 
-var path = require("path");
-var fs = require("fs");
-var helpers = require("yeoman-generator").test;
-var temp = require("temp");
 var assert = require("yeoman-assert");
-var exec = require("child_process").exec;
-var async = require("async");
-var mkdirp = require("mkdirp");
+var testLib = require("./lib/test-lib");
 
 describe("angular-nmi", function() {
 	
-	describe("default", function () {
+	describe("route", function () {
 		var targetFile = "app/foo.route.js";
 		
 		before(function (done) {
-			temp.track();
-			var workspace = context.workspace = temp.mkdirSync();
-			console.log("    Using temporary folder: ", workspace);
-			
-			helpers.testDirectory(workspace, function () {
-				helpers.run(path.join(__dirname, "../route"))
-					.withArguments([ "app.foo" ])
-					.on("ready", function(generator) {
-						mkdirp.sync("app");
-					})
-					.on("end", done);
-			});
-			
+			testLib.genRun(done, "route", ["app.foo"], true, []);
 		});
 		
 		it("creates expected files", function () {
