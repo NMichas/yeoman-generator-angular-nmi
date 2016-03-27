@@ -1,6 +1,6 @@
-# Resources generator for AngularJS
+# yeoman-generator-angular-nmi
 
-[https://api.travis-ci.org/NMichas/yeoman-generator-angular-nmi.png](https://api.travis-ci.org/NMichas/yeoman-generator-angular-nmi)
+[![Build Status](https://travis-ci.org/NMichas/yeoman-generator-angular-nmi.svg?branch=master)](https://travis-ci.org/NMichas/yeoman-generator-angular-nmi)
 
 ## What this is (and isn't) about
 * It does generate various AngularJS resources (controllers, factories, routes, etc.) in a 
