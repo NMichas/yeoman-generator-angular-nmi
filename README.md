@@ -1,5 +1,3 @@
-# yeoman-generator-angular-nmi
-
 [![Build Status](https://travis-ci.org/NMichas/yeoman-generator-angular-nmi.svg?branch=master)](https://travis-ci.org/NMichas/yeoman-generator-angular-nmi)
 
 ## What this is (and isn't) about
