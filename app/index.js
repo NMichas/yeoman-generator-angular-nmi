@@ -4,7 +4,7 @@ module.exports = generators.Base.extend({
 	help : function() {
 		console.log("Usage:");
 		console.log(
-			+ "\t yo angular-nmi:constant\tCreates a new Constant\n"
+			"\t yo angular-nmi:constant\tCreates a new Constant\n"
 			+ "\t yo angular-nmi:controller\tCreates a new Controller\n"
 			+ "\t yo angular-nmi:factory\t\tCreates a new Factory\n"
 			+ "\t yo angular-nmi:module\t\tCreates a new Module\n"
