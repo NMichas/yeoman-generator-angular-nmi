@@ -24,7 +24,8 @@
     "yeoman-generator": "^0.22.5"
   },
   "files": [
-    "app"
+    "app", "constant", "controller", "factory", "feature", "module", "route",
+    "vc", "view"
   ],
   "devDependencies": {
     "chai": "^3.5.0",
