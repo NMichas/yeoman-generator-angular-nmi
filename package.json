@@ -9,8 +9,7 @@
     "yeoman",
     "generator",
     "styleguide",
-    "ng",
-    "templates"
+    "ng"
   ],
   "author": "Nassos A. Michas <nassosmichas@me.com>",
   "license": "GPL-3.0",
@@ -26,7 +25,7 @@
   },
   "files": [
     "app", "constant", "controller", "factory", "feature", "module", "route",
-    "vc", "view"
+    "vc", "view", "templates"
   ],
   "devDependencies": {
     "chai": "^3.5.0",
