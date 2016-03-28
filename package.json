@@ -9,7 +9,8 @@
     "yeoman",
     "generator",
     "styleguide",
-    "ng"
+    "ng",
+    "templates"
   ],
   "author": "Nassos A. Michas <nassosmichas@me.com>",
   "license": "GPL-3.0",
