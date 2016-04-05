@@ -28,16 +28,12 @@ module.exports = generators.Base.extend({
 	writing: function() {
 		// Create .js.
 		this.fs.copyTpl(
-			this.templatePath("../../templates/factory.tpl.js"),
-			this.destinationPath(this.config.get("resourcePath") + ".service.js"), {
+			this.templatePath("../../templates/route-ui.tpl.js"),
+			this.destinationPath(this.config.get("resourcePath") + ".route.js"), {
 				resourceName: this.config.get("resourceName"),
 				moduleName: this.config.get("moduleName"),
-				resourceNameJS: this.config.get("resourceNameForJS") + "Service",
 				
-				factory_factory: i18n.__("factory_factory"),
-				factory_local_variables: i18n.__("factory_local_variables"),
-				factory_local_functions: i18n.__("factory_local_functions"),
-				factory_exported: i18n.__("factory_exported")
+				route_routes_configuration: i18n.__("route_routes_configuration")
 			}
 		);
 	}

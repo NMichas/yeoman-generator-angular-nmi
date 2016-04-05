@@ -1,72 +1,40 @@
-"use strict"
+"use strict";
 
 var generators = require("yeoman-generator");
-var util = require("../app/util");
-var colog = require("colog");
+var i18n = require("i18n");
 
 module.exports = generators.Base.extend({
+	constructor: function () {
+		generators.Base.apply(this, arguments);
+		
+		// Define arguments.
+		this.argument("resource", { type: String, required: true });
+		
+		// Define options.
+		this.option("root");
+	},
+	
 	initializing: function() {
-		// Check prerequisites before starting.
-		if (!util.prereqCheck()) {
-			process.exit(1);
-		};
-	},
-
-	prompting: function() {
-		// Get the name of the component to create from CLI args.
-		this.name = arguments[0]
-		
-		// Prepare prompts.
-		var done = this.async();
-		var prompts = [];
-		
-		if (!this.name) {
-			prompts.push({
-				type: "input",
-				name: "name",
-				message: "Name",
-				default: "app.foo"
-			})
-		}
-		
-		// Show prompts.
-		if (prompts.length > 0) {
-			this.prompt(prompts, function(answers) {
-					this.name = answers.name;
-					done();
-				}.bind(this));
-		} else {
-			done();
-		}
-	},
-
-	configuring: function() {
-		this.name = this.name.trim();
-		
-		// Check a parent module has been specified.
-		if (!util.isModuleSpecified(this.name)) {
-			colog.error("[ERROR] Could not find the name of the parent module " +
-					"of your resource. Prefix your resource with the parent " +
-					"module's name, e.g. app.contacts, admin.contacts.");
-			process.exit(1);
-		}
-		
-		// Check the module exists.
-		if (!util.isModuleFolderPresent(this.name)) {
-			colog.error("[ERROR] Module directory does not exist.");
-			process.exit(1);
-		}
+		// Call the base-generator to perform prompting and checking.
+		this.composeWith("angular-nmi:base", 
+			{ 
+				options: {
+					root: this.options.root ? true : false
+				},
+				args: [this.resource]
+			});
 	},
 	
 	writing: function() {
-		var outputPath = util.convertToPath(this.name) + ".html";
-		
 		// Create .js.
 		this.fs.copyTpl(
 			this.templatePath("../../templates/view.tpl.html"),
-			this.destinationPath(outputPath), {
-				resourceNameJS: this.name + ".html"
+			this.destinationPath(this.config.get("resourcePath") + ".html"), {
+				resourceName: this.config.get("resourceName"),
+				
+				view_hw: i18n.__("view_hw")
 			}
 		);
-	}	
+	}
+	
 });

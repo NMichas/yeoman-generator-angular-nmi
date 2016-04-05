@@ -1,6 +1,6 @@
 {
   "name": "generator-angular-nmi",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "Yeoman generator for various AngularJS resources to encourage a common style within a project.",
   "keywords": [
     "yeoman-generator",
@@ -20,12 +20,23 @@
   },
   "dependencies": {
     "colog": "^1.0.4",
+    "i18n": "^0.8.1",
     "mkdirp": "^0.5.1",
+    "os-locale": "^1.4.0",
     "yeoman-generator": "^0.22.5"
   },
   "files": [
-    "app", "constant", "controller", "factory", "feature", "module", "route",
-    "vc", "view", "templates"
+    "app",
+    "base",
+    "constant",
+    "controller",
+    "factory",
+    "feature",
+    "module",
+    "route-ui",
+    "templates",
+    "vc",
+    "view"
   ],
   "devDependencies": {
     "chai": "^3.5.0",
@@ -36,7 +47,8 @@
     "mocha-sinon": "^1.1.5",
     "sinon": "^1.17.3",
     "temp": "^0.8.3",
-    "yeoman-assert": "^2.1.1"
+    "yeoman-assert": "^2.1.1",
+    "yeoman-test": "^1.1.0"
   },
   "scripts": {
     "test": "mocha"

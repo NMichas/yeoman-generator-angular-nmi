@@ -1,57 +1,55 @@
-"use strict"
+"use strict";
 
 var generators = require("yeoman-generator");
-var util = require("../app/util");
-var mkdirp = require("mkdirp");
+var path = require("path");
+var generatorRoot = path.join(__dirname, "..", "app");
+var util = require(path.join(generatorRoot, "lib", "util"));
 
 module.exports = generators.Base.extend({
-	initializing: function() {
-		
-	},
-	
-	prompting: function() {
-		// Get the name of the component to create from CLI args.
-		this.name = arguments[0]
-		
-		// Prepare prompts.
-		var done = this.async();
-		var prompts = [];
-		
-		if (!this.name) {
-			prompts.push({
-				type: "input",
-				name: "name",
-				message: "Name",
-				default: "app.foo"
-			})
-		}
-		
-		// Show prompts.
-		if (prompts.length > 0) {
-			this.prompt(prompts, function(answers) {
-					this.name = answers.name;
-					done();
-				}.bind(this));
-		} else {
-			done();
-		}
+	constructor : function() {
+		generators.Base.apply(this, arguments);
+
+		// Define arguments.
+		this.argument("resource", {
+			type : String,
+			required : true
+		});
+
+		// Define options.
+		this.option("root");
 	},
 
-	configuring: function() {
-		this.name = this.name.trim();
-		
-		// Create the folder for the new resources.
-		mkdirp.sync(util.convertToPath(this.name));
+	initializing : function() {
+		// Call the base-generator to perform prompting and checking.
+		this.composeWith("angular-nmi:base", {
+			options : {
+				root : this.options.root ? true : false
+			},
+			args : [ this.resource ]
+		});
 	},
-	
-	compose: function() {
-		var module = util.extractModuleName(this.name);
-		var resource = util.extractResourceName(this.name);
-		
-		this.composeWith("angular-nmi:module", {args: [this.name]});
-		this.composeWith("angular-nmi:constant", {args: 
-			[module + "." + resource + "." + resource]});
-		this.composeWith("angular-nmi:route", {args: 
-			[module + "." + resource + "." + resource]});
+
+	writing : function() {
+		this.composeWith("angular-nmi:module", {
+			options : {
+				root : this.options.root ? true : false
+			},
+			args : [ this.resource ]
+		});
+
+		this.composeWith("angular-nmi:constant", {
+			options : {
+				root : this.options.root ? true : false
+			},
+			args : [ util.suffixRepeat(this.resource) ]
+		});
+
+		this.composeWith("angular-nmi:route-ui", {
+			options : {
+				root : this.options.root ? true : false
+			},
+			args : [ util.suffixRepeat(this.resource) ]
+		});
 	}
+
 });

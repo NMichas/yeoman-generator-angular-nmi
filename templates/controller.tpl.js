@@ -1,55 +1,53 @@
 /**
  * @ngdoc controller
- * @name <%=resourceURI%>.controller.js
- * @description <%=resourceNameJS%> controller
+ * @name <%=resourceName%>.controller.js
+ * @description <%=resourceNameJS%> <%=controller_controller%>
  */
 (function() {
 	"use strict";
 
-	angular
+	angular // eslint-disable-line no-undef
 		.module("<%=moduleName%>")
 		.controller("<%=resourceNameJS%>", <%=resourceNameJS%>);
 
 	/** @ngInject */
 	function <%=resourceNameJS%>($scope) {
-		// Capture 'this'. 
-		var vm = this;
-		
+		//var vm = this;
+
 		/***********************************************************************
-		 * Local variables.
+		 * <%=controller_local_variables%>.
 		 **********************************************************************/
-		var bar;
-				
+		//var bar;
+
 		/***********************************************************************
-		 * Variables exports.
+		 * <%=controller_variables_exports%>.
 		 **********************************************************************/
-		vm.fooBar = "fooBar";
-		
+		//vm.fooBar = "fooBar";
+
 		/***********************************************************************
-		 * Functions exports.
+		 * <%=controller_functions_exports%>.
 		 **********************************************************************/
-		vm.foo = foo;
-		
-		// Calling controller's activation.
+		//vm.foo = foo;
+
+		// <%=controller_calling_activation%>.
 		activate();
 
 		/***********************************************************************
-		 * Controller activation.
+		 * <%=controller_activation%>.
 		 **********************************************************************/
-		function activate() {			
+		function activate() {
 		}
-		
+
 		/***********************************************************************
 		 * $scope destroy.
 		 **********************************************************************/
-		$scope.$on("$destroy", function() {			
+		$scope.$on("$destroy", function() {
 		});
-		
+
 		/***********************************************************************
-		 * Functions.
+		 * <%=controller_functions%>.
 		 **********************************************************************/
-		function foo(bar) {
-			return "";
-		}
+		//function foo(bar) {
+		//}
 	}
 })();

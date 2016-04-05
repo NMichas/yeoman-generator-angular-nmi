@@ -1,36 +1,34 @@
 /**
  * @ngdoc service
- * @name <%=resourceURI%>.factory.js
- * @description <%=resourceNameJS%> factory
+ * @name <%=resourceName%>.factory.js
+ * @description <%=resourceNameJS%> <%=factory_factory%>
  */
 (function() {
 	"use strict";
 
-	angular
+	angular // eslint-disable-line no-undef
 		.module("<%=moduleName%>")
 		.factory("<%=resourceNameJS%>", <%=resourceNameJS%>);
 
 	/** @ngInject */
 	function <%=resourceNameJS%>() {
 		/***********************************************************************
-		 * Local variables.
+		 * <%=factory_local_variables%>.
 		 **********************************************************************/
-		var bar;
-		
-		/***********************************************************************
-		 * Local functions.
-		 **********************************************************************/
-		var foo = function() {
-			
-		};
+		//var bar;
 
 		/***********************************************************************
-		 * Exported functions.
+		 * <%=factory_local_functions%>.
 		 **********************************************************************/
-		return {
-			fooBar: function () {
-				
-			},
-		};
+		//var foo = function() {
+		//};
+
+		/***********************************************************************
+		 * <%=factory_exported%>.
+		 **********************************************************************/
+		//return {
+		//	fooBar: function () {
+		//	},
+		//};
 	}
 })();

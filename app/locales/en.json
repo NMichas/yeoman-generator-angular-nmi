@@ -1,0 +1,38 @@
+{
+	"usage": "Usage",
+	"error": "[ERROR]",
+	"folderDoesNotExist": "Folder '%s' could not be found.",
+	"creates_a_new_constant": "Creates a new Constant",
+	"creates_a_new_controller": "Creates a new Controller",
+	"creates_a_new_factory": "Creates a new Factory",
+	"creates_a_new_module": "Creates a new Module",
+	"creates_a_new_route_configuration": "Creates a new Route configuration",
+	"creates_a_new_html_view": "Creates a new HTML View",
+	"creates_a_new_module_constant_and_route": "Creates a new Module, Constant, and Route",
+	"creates_a_new_html_view_and_controller": "Creates a new HTML View and Controller",
+	"no_sub_module_for_root": "You can not define a sub-module for a root-level resource.",
+	"root_level_without_sub_module": "It seems you are trying to generate a root-level resource without specifying the --root option.",
+	
+	"constant_constant": "constant",
+	"constant_definition": "Constants definition",
+	
+	"controller_controller": "controller",
+	"controller_local_variables": "Local variables",
+	"controller_variables_exports": "Exported variables",
+	"controller_functions_exports": "Exported functions",
+	"controller_calling_activation": "Activating the controller",
+	"controller_activation": "Controller activation",
+	"controller_scope_destroy": "$scope destroy",
+	"controller_functions": "Functions",
+	
+	"factory_factory": "factory",
+	"factory_local_variables": "Local variables",
+	"factory_local_functions": "Local functions",
+	"factory_exported": "Exported functions and variables",
+	
+	"module_module": "module",
+	
+	"route_routes_configuration": "routes configuration",
+	
+	"view_hw": "Hello world from view"
+}

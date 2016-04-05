@@ -1,17 +1,17 @@
 /**
  * @ngdoc object
- * @name <%=resourceURI%>.route.js
- * @description <%=resourceURI%> routes configuration.
+ * @name <%=resourceName%>.route.js
+ * @description <%=resourceName%> <%=route_routes_configuration%>
  */
 (function() {
 	"use strict";
 
-	angular
+	angular // eslint-disable-line no-undef
 		.module("<%=moduleName%>")
 		.config(routerConfig);
 
 	/** @ngInject */
-	function routerConfig($stateProvider) {
+	function routerConfig($stateProvider) { // eslint-disable-line no-unused-vars
 //		$stateProvider.state("foo", {
 //			controller : "FooController",
 //			controllerAs :  "foo",

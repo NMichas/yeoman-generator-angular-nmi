@@ -1,17 +1,17 @@
 /**
  * @ngdoc object
- * @name <%=resourceURI%>.constant.js
- * @description <%=resourceNameJS%> constant
+ * @name <%=resourceName%>.constant.js
+ * @description <%=resourceNameJS%> <%=constant_constant%>
  */
 (function() {
 	"use strict";
 
-	// Constants definition.
+	// <%=constant_definition%>
 	var constant = {
-			
-	}
-	
-	angular
+
+	};
+
+	angular // eslint-disable-line no-undef
 		.module("<%=moduleName%>")
 		.constant("<%=resourceNameJS%>", constant);
 })();

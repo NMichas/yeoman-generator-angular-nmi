@@ -1,71 +1,57 @@
-"use strict"
+"use strict";
 
 var generators = require("yeoman-generator");
-var mkdirp = require("mkdirp");
-var util = require("../app/util");
-var colog = require("colog");
-var mkdirp = require("mkdirp");
+var i18n = require("i18n");
+var path = require("path");
+var generatorRoot = path.join(__dirname, "..", "app");
+var util = require(path.join(generatorRoot, "lib", "util"));
+var appRoot = path.join(".", util.appSourceRoot);
 
 module.exports = generators.Base.extend({
+	constructor: function () {
+		generators.Base.apply(this, arguments);
+		
+		// Define arguments.
+		this.argument("resource", { type: String, required: true });
+		
+		// Define options.
+		this.option("root");
+	},
+	
 	initializing: function() {
-		// Check prerequisites before starting.
-		if (!util.prereqCheck()) {
-			process.exit(1);
-		};
-	},
-
-	prompting: function() {
-		// Get the name of the component to create from CLI args.
-		this.name = arguments[0]
-		
-		// Prepare prompts.
-		var done = this.async();
-		var prompts = [];
-		
-		if (!this.name) {
-			prompts.push({
-				type: "input",
-				name: "name",
-				message: "Name",
-				default: "app.fooModule"
-			})
-		}
-		
-		// Show prompts.
-		if (prompts.length > 0) {
-			this.prompt(prompts, function(answers) {
-					this.name = answers.name;
-					done();
-				}.bind(this));
-		} else {
-			done();
-		}
-	},
-
-	configuring: function() {
-		this.name = this.name.trim();
-		
-		// Check a parent module has been specified.
-		if (!util.isModuleSpecified(this.name)) {
-			colog.error("[ERROR] Could not find the name of the parent module " +
-					"of your resource. Prefix your resource with the parent " +
-					"module's name, e.g. app.contacts, admin.contacts.");
-			process.exit(1);
-		}
+		// Call the base-generator to perform prompting and checking.
+		this.composeWith("angular-nmi:base", 
+			{ 
+				options: {
+					root: this.options.root ? true : false
+				},
+				args: [this.resource]
+			});
 	},
 	
 	writing: function() {
-		var outputPath = this.name.replace(/\./g, "/") + "/" 
-			+ util.extractResourceName(this.name) + ".module.js";
+		// Resource-path needs to be overwritten in this case, since a module
+		// does not create a resource under a module but the module itself.
+		var resourcePath = function(resource) {
+			var moduleName = resource;
+			var resourceName = resource;
+			if (moduleName.indexOf(".") > -1) {
+				return path.join(appRoot, util.toPath(moduleName.substring(moduleName.indexOf(".") + 1)),  
+						resourceName.substring(resourceName.lastIndexOf(".") + 1) + ".module.js");
+			} else {
+				return path.join(appRoot, resourceName + ".module.js");
+			}
+		};
 		
-		// Create module's dir.
-		mkdirp.sync(this.name.replace(/\./g, "/"));
-		
-		// Create module .js.
+		// Create .js.
 		this.fs.copyTpl(
 			this.templatePath("../../templates/module.tpl.js"),
-			this.destinationPath(outputPath), {
-				resourceURI: this.name
+			this.destinationPath(resourcePath(this.resource)), 
+			{
+				resourceName: this.resource,
+				moduleName: this.config.get("moduleName"),
+				
+				module_module: i18n.__("module_module")
 			}
 		);
 	}
