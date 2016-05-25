@@ -6,23 +6,13 @@ var i18n = require("i18n");
 module.exports = generators.Base.extend({
 	constructor: function () {
 		generators.Base.apply(this, arguments);
-		
-		// Define arguments.
-		this.argument("resource", { type: String, required: true });
-		
-		// Define options.
-		this.option("root");
 	},
 	
 	initializing: function() {
 		// Call the base-generator to perform prompting and checking.
-		this.composeWith("angular-nmi:base", 
-			{ 
-				options: {
-					root: this.options.root ? true : false
-				},
-				args: [this.resource]
-			});
+		this.composeWith("angular-nmi:base", {
+			args : this.arguments 
+		});
 	},
 	
 	writing: function() {
@@ -31,7 +21,7 @@ module.exports = generators.Base.extend({
 			this.templatePath("../../templates/factory.tpl.js"),
 			this.destinationPath(this.config.get("resourcePath") + ".service.js"), {
 				resourceName: this.config.get("resourceName"),
-				moduleName: this.config.get("moduleName"),
+				moduleName : this.config.get("resourceModule"),
 				resourceNameJS: this.config.get("resourceNameForJS") + "Service",
 				
 				factory_factory: i18n.__("factory_factory"),

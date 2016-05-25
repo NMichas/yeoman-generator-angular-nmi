@@ -16,15 +16,22 @@ module.exports = generators.Base.extend({
 
 	constructor : function() {
 		generators.Base.apply(this, arguments);
-
+		
 		// Define CLI arguments.
-		this.argument("resource", {
+		this.argument("resourcePath", {
 			type : String,
 			required : true
 		});
-
-		// Define options.
-		this.option("root");
+		
+		this.argument("resourceModule", {
+			type : String,
+			required : true
+		});
+		
+		this.argument("resourceName", {
+			type : String,
+			required : true
+		});
 	},
 
 	prompting : function() {
@@ -32,10 +39,28 @@ module.exports = generators.Base.extend({
 		var done = this.async();
 		var prompts = [];
 
-		if (!this.resource) {
+		if (!this.resourcePath) {
 			prompts.push({
 				type : "input",
-				name : "resource",
+				name : "resourcePath",
+				message : "Path location",
+				required : true
+			});
+		}
+		
+		if (!this.resourceModule) {
+			prompts.push({
+				type : "input",
+				name : "resourceModule",
+				message : "Module name",
+				required : true
+			});
+		}
+		
+		if (!this.resourceName) {
+			prompts.push({
+				type : "input",
+				name : "resourceName",
 				message : "Resource name",
 				required : true
 			});
@@ -44,8 +69,15 @@ module.exports = generators.Base.extend({
 		// Show prompts.
 		if (prompts.length > 0) {
 			this.prompt(prompts, function(answers) {
-				this.module = answers.module;
-				this.resource = answers.resource;
+				if (!this.resourcePath) {
+					this.resourcePath = answers.resourcePath;
+				}
+				if (!this.resourceModule) {
+					this.resourceModule = answers.resourceModule;
+				}
+				if (!this.resourceName) {
+					this.resourceName = answers.resourceName;
+				}
 				done();
 			}.bind(this));
 		} else {
@@ -54,37 +86,18 @@ module.exports = generators.Base.extend({
 	},
 
 	configuring : function() {
-		this.resource = this.resource.trim();
-		var resourceName = util.extractResourceName(this.resource);
-		var moduleName = util.extractModuleName(this.resource);
-
-		// If this is a root-level resource, check that a sub-module is not
-		// defined and calculate the output path of the resource.
-		var resourcePath;
-		if (this.options.root) {
-			if (this.resource.indexOf(".") > -1) {
-				colog.error(i18n.__("error") + " "
-						+ i18n.__("no_sub_module_for_root"));
-				process.exit(1);
-			}
-			resourcePath = path.join(appRoot, resourceName);
-		} else {
-			if (this.resource.indexOf(".") == -1) {
-				colog.error(i18n.__("error") + " "
-						+ i18n.__("root_level_without_sub_module"));
-				process.exit(1);
-			}
-			resourcePath = path.join(appRoot, util.toPath(moduleName
-					.substring(moduleName.indexOf(".") + 1)), resourceName);
-		}
-
-		// Update config storage to exchange values with the caller of this
-		// sub-generator.
-		this.config.set("moduleName", moduleName);
-		this.config.set("resourceName", resourceName);
-		this.config.set("resourceNameForJS", util
-				.resourceNameForJS(resourceName));
-		this.config.set("resourcePath", resourcePath);
+		// Trim input.
+		this.resourcePath = this.resourcePath.trim(); 
+		this.resourceModule = this.resourceModule.trim(); 
+		this.resourceName = this.resourceName.trim();
+		
+		// Set arguments to global config.
+		this.config.set({
+			resourcePath : this.resourcePath + path.sep + this.resourceName,
+			resourceModule : this.resourceModule,
+			resourceName : this.resourceName,
+			resourceNameForJS : util.resourceNameForJS(this.resourceName),
+		});
 	}
 
 });

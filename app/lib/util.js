@@ -10,9 +10,6 @@ module.exports = {
 	dirExists : dirExists,
 	toPath : toPath,
 	resourceNameForJS : resourceNameForJS,
-	extractResourceName : extractResourceName,
-	extractModuleName : extractModuleName,
-	suffixRepeat : suffixRepeat,
 	setupLexicon : setupLexicon
 }
 
@@ -64,54 +61,6 @@ function resourceNameForJS(res) {
 	}));
 }
 
-/**
- * Takes the name of a resource to be generated e.g. "foo.bar.FooBar" and
- * extracts the resource name. If the resource to be generated contains a "."
- * then it is regarded a resource under a sub-module.
- * 
- * @param res
- *            The name of the resource to check.
- * @returns {String}
- */
-function extractResourceName(res) {
-	if (res.lastIndexOf(".") == -1) {
-		return res;
-	} else {
-		return res.substring(res.lastIndexOf(".") + 1);
-	}
-}
-
-/**
- * Takes the name of a resource to be generated e.g. "foo.bar.FooBar" and
- * extracts the module name. If the resource to be generated contains a "." then
- * it is regarded a resource under a sub-module.
- * 
- * @param res
- *            The name of the resource to check.
- * @returns {String}
- */
-function extractModuleName(res) {
-	if (res.indexOf(".") == -1) {
-		return res;
-	} else {
-		return res.substring(0, res.lastIndexOf("."));
-	}
-}
-
-/**
- * A helper to repeat the last name of the resource to be created.
- * 
- * @param resource
- * @returns
- */
-function suffixRepeat(resource) {
-	if (resource.indexOf(".") > -1) {
-		return resource + "."
-				+ resource.substring(resource.lastIndexOf(".") + 1);
-	} else {
-		return resource;
-	}
-}
 
 /*******************************************************************************
  * Local functions

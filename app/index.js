@@ -4,6 +4,7 @@ var path = require("path");
 var generatorRoot = path.join(__dirname, "..", "app");
 var util = require(path.join(generatorRoot, "lib", "util"));
 var colog = require("colog");
+var parsedPackage = require('../package.json');
 
 module.exports = generators.Base.extend({
 	initializing : function() {
@@ -12,6 +13,7 @@ module.exports = generators.Base.extend({
 	},
 	
 	help : function() {
+		colog.info("angular-nmi v" + parsedPackage.version);
 		colog.info(i18n.__("usage") + ":");
 
 		colog.info(

@@ -34,7 +34,7 @@ describe("angular-nmi", function() {
 			tmpDir = temp.mkdirSync();
 			helpers.run(path.join(__dirname, "..", "constant"))
 				.inDir(tmpDir)
-				.withArguments("app.admin.system")
+				.withArguments("src/app/admin app.admin system")
 				.withGenerators([path.join(__dirname, "..", "base")])
 				.on("end", done);
 		});
@@ -55,7 +55,7 @@ describe("angular-nmi", function() {
 			tmpDir = temp.mkdirSync();
 			helpers.run(path.join(__dirname, "..", "controller"))
 			.inDir(tmpDir)
-			.withArguments("app.admin.system")
+			.withArguments("src/app/admin app.admin system")
 			.withGenerators([path.join(__dirname, "..", "base")])
 			.on("end", done);
 		});
@@ -76,7 +76,7 @@ describe("angular-nmi", function() {
 			tmpDir = temp.mkdirSync();
 			helpers.run(path.join(__dirname, "..", "factory"))
 			.inDir(tmpDir)
-			.withArguments("app.admin.system")
+			.withArguments("src/app/admin app.admin system")
 			.withGenerators([path.join(__dirname, "..", "base")])
 			.on("end", done);
 		});
@@ -97,7 +97,7 @@ describe("angular-nmi", function() {
 			tmpDir = temp.mkdirSync();
 			helpers.run(path.join(__dirname, "..", "module"))
 			.inDir(tmpDir)
-			.withArguments("app.admin")
+			.withArguments("src/app/admin app.admin admin")
 			.withGenerators([path.join(__dirname, "..", "base")])
 			.on("end", done);
 		});
@@ -117,7 +117,7 @@ describe("angular-nmi", function() {
 			tmpDir = temp.mkdirSync();
 			helpers.run(path.join(__dirname, "..", "route-ui"))
 			.inDir(tmpDir)
-			.withArguments("app.admin.system")
+			.withArguments("src/app/admin app.admin system")
 			.withGenerators([path.join(__dirname, "..", "base")])
 			.on("end", done);
 		});
@@ -137,7 +137,7 @@ describe("angular-nmi", function() {
 			tmpDir = temp.mkdirSync();
 			helpers.run(path.join(__dirname, "..", "view"))
 			.inDir(tmpDir)
-			.withArguments("app.admin.system")
+			.withArguments("src/app/admin . system")
 			.withGenerators([path.join(__dirname, "..", "base")])
 			.on("end", done);
 		});
@@ -158,7 +158,7 @@ describe("angular-nmi", function() {
 			tmpDir = temp.mkdirSync();
 			helpers.run(path.join(__dirname, "..", "feature"))
 			.inDir(tmpDir)
-			.withArguments("app.admin")
+			.withArguments("src/app/admin app.admin admin")
 			.withGenerators([
 				path.join(__dirname, "..", "base"),
 				path.join(__dirname, "..", "module"),
@@ -183,7 +183,7 @@ describe("angular-nmi", function() {
 			tmpDir = temp.mkdirSync();
 			helpers.run(path.join(__dirname, "..", "vc"))
 			.inDir(tmpDir)
-			.withArguments("app.admin")
+			.withArguments("src/app/admin app.admin admin")
 			.withGenerators([
 				path.join(__dirname, "..", "base"),
 				path.join(__dirname, "..", "view"),
