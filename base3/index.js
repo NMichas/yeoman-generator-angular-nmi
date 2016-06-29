@@ -8,30 +8,32 @@ var util = require(path.join(generatorRoot, "lib", "util"));
 var colog = require("colog");
 var appRoot = path.join(".", util.appSourceRoot);
 
+// A base generator to check arguments and prompt for missing ones.
+// 3-args version.
 module.exports = generators.Base.extend({
-	initializing : function() {
-		// Initialise translations.
-		util.setupLexicon(path.join(generatorRoot, "locales"));
-	},
-
 	constructor : function() {
 		generators.Base.apply(this, arguments);
 		
 		// Define CLI arguments.
-		this.argument("resourcePath", {
-			type : String,
-			required : true
-		});
-		
-		this.argument("resourceModule", {
-			type : String,
-			required : true
-		});
-		
-		this.argument("resourceName", {
-			type : String,
-			required : true
-		});
+		if (arguments["0"].length > 0) {
+			this.argument("resourcePath", {
+				type : String,
+				required : true
+			});
+			this.argument("resourceModule", {
+				type : String,
+				required : true
+			});
+			this.argument("resourceName", {
+				type : String,
+				required : true
+			});
+		}
+	},
+	
+	initializing : function() {
+		// Initialise translations.
+		util.setupLexicon(path.join(generatorRoot, "locales"));
 	},
 
 	prompting : function() {

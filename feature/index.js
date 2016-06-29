@@ -12,7 +12,7 @@ module.exports = generators.Base.extend({
 
 	initializing : function() {
 		// Call the base-generator to perform prompting and checking.
-		this.composeWith("angular-nmi:base", {
+		this.composeWith("angular-nmi:base3", {
 			args : this.arguments
 		});
 	},

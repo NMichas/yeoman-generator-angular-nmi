@@ -35,13 +35,17 @@ describe("angular-nmi", function() {
 			helpers.run(path.join(__dirname, "..", "constant"))
 				.inDir(tmpDir)
 				.withArguments("src/app/admin app.admin system")
-				.withGenerators([path.join(__dirname, "..", "base")])
+				.withGenerators([path.join(__dirname, "..", "base3")])
 				.on("end", done);
 		});
 		
-		it("creates expected files and content", function () {
+		it("creates expected files", function () {
 			var targetFile = path.join(tmpDir, "src", "app", "admin", "system.constant.js");
 			assert.file(targetFile);
+		});
+		
+		it("creates expected content", function () {
+			var targetFile = path.join(tmpDir, "src", "app", "admin", "system.constant.js");
 			assert.fileContent(targetFile, ".module(\"app.admin\")");
 			assert.fileContent(targetFile, ".constant(\"SystemConstant\", constant);");
 		});
@@ -54,15 +58,19 @@ describe("angular-nmi", function() {
 		before(function(done) {
 			tmpDir = temp.mkdirSync();
 			helpers.run(path.join(__dirname, "..", "controller"))
-			.inDir(tmpDir)
-			.withArguments("src/app/admin app.admin system")
-			.withGenerators([path.join(__dirname, "..", "base")])
-			.on("end", done);
+				.inDir(tmpDir)
+				.withArguments("src/app/admin app.admin system")
+				.withGenerators([path.join(__dirname, "..", "base3")])
+				.on("end", done);
 		});
 		
-		it("creates expected files and content", function () {
+		it("creates expected files", function () {
 			var targetFile = path.join(tmpDir, "src", "app", "admin", "system.controller.js");
 			assert.file(targetFile);
+		});
+		
+		it("creates expected content", function () {
+			var targetFile = path.join(tmpDir, "src", "app", "admin", "system.controller.js");
 			assert.fileContent(targetFile, ".module(\"app.admin\")");
 			assert.fileContent(targetFile, ".controller(\"SystemController\", SystemController);");
 		});
@@ -75,15 +83,19 @@ describe("angular-nmi", function() {
 		before(function(done) {
 			tmpDir = temp.mkdirSync();
 			helpers.run(path.join(__dirname, "..", "factory"))
-			.inDir(tmpDir)
-			.withArguments("src/app/admin app.admin system")
-			.withGenerators([path.join(__dirname, "..", "base")])
-			.on("end", done);
+				.inDir(tmpDir)
+				.withArguments("src/app/admin app.admin system")
+				.withGenerators([path.join(__dirname, "..", "base3")])
+				.on("end", done);
 		});
 		
-		it("creates expected files and content", function () {
+		it("creates expected files", function () {
 			var targetFile = path.join(tmpDir, "src", "app", "admin", "system.service.js");
 			assert.file(targetFile);
+		});
+		
+		it("creates expected content", function () {
+			var targetFile = path.join(tmpDir, "src", "app", "admin", "system.service.js");
 			assert.fileContent(targetFile, ".module(\"app.admin\")");
 			assert.fileContent(targetFile, ".factory(\"SystemService\", SystemService);");
 		});
@@ -96,16 +108,20 @@ describe("angular-nmi", function() {
 		before(function(done) {
 			tmpDir = temp.mkdirSync();
 			helpers.run(path.join(__dirname, "..", "module"))
-			.inDir(tmpDir)
-			.withArguments("src/app/admin app.admin admin")
-			.withGenerators([path.join(__dirname, "..", "base")])
-			.on("end", done);
+				.inDir(tmpDir)
+				.withArguments("src/app/admin admin")
+				.withGenerators([path.join(__dirname, "..", "base2")])
+				.on("end", done);
 		});
 		
-		it("creates expected files and content", function () {
+		it("creates expected files", function () {
 			var targetFile = path.join(tmpDir, "src", "app", "admin", "admin.module.js");
 			assert.file(targetFile);
-			assert.fileContent(targetFile, ".module(\"app.admin\"");
+		});
+		
+		it("creates expectedcontent", function () {
+			var targetFile = path.join(tmpDir, "src", "app", "admin", "admin.module.js");
+			assert.fileContent(targetFile, ".module(\"admin\"");
 		});
 	});
 	
@@ -116,15 +132,19 @@ describe("angular-nmi", function() {
 		before(function(done) {
 			tmpDir = temp.mkdirSync();
 			helpers.run(path.join(__dirname, "..", "route-ui"))
-			.inDir(tmpDir)
-			.withArguments("src/app/admin app.admin system")
-			.withGenerators([path.join(__dirname, "..", "base")])
-			.on("end", done);
+				.inDir(tmpDir)
+				.withArguments("src/app/admin app.admin system")
+				.withGenerators([path.join(__dirname, "..", "base3")])
+				.on("end", done);
 		});
 		
-		it("creates expected files and content", function () {
+		it("creates expected files", function () {
 			var targetFile = path.join(tmpDir, "src", "app", "admin", "system.route.js");
 			assert.file(targetFile);
+		});
+		
+		it("creates expected content", function () {
+			var targetFile = path.join(tmpDir, "src", "app", "admin", "system.route.js");
 			assert.fileContent(targetFile, ".module(\"app.admin\"");
 		});
 	});
@@ -136,66 +156,70 @@ describe("angular-nmi", function() {
 		before(function(done) {
 			tmpDir = temp.mkdirSync();
 			helpers.run(path.join(__dirname, "..", "view"))
-			.inDir(tmpDir)
-			.withArguments("src/app/admin . system")
-			.withGenerators([path.join(__dirname, "..", "base")])
-			.on("end", done);
+				.inDir(tmpDir)
+				.withArguments("src/app/admin system")
+				.withGenerators([path.join(__dirname, "..", "base2")])
+				.on("end", done);
 		});
 		
-		it("creates expected files and content", function () {
+		it("creates expected files", function () {
 			var targetFile = path.join(tmpDir, "src", "app", "admin", "system.html");
 			assert.file(targetFile);
+		});
+		
+		it("creates expected content", function () {
+			var targetFile = path.join(tmpDir, "src", "app", "admin", "system.html");
 			assert.fileContent(targetFile, "system.html");
 		});
 	});
 	
 	
 	// angular-nmi:feature
-	describe("feature", function () {
-		temp.track();
-		var tmpDir;
-		before(function(done) {
-			tmpDir = temp.mkdirSync();
-			helpers.run(path.join(__dirname, "..", "feature"))
-			.inDir(tmpDir)
-			.withArguments("src/app/admin app.admin admin")
-			.withGenerators([
-				path.join(__dirname, "..", "base"),
-				path.join(__dirname, "..", "module"),
-				path.join(__dirname, "..", "constant"),
-				path.join(__dirname, "..", "route-ui")
-			])
-			.on("end", done);
-		});
-		
-		it("creates expected files and content", function () {
-			assert.file(path.join(tmpDir, "src", "app", "admin", "admin.module.js"));
-			assert.file(path.join(tmpDir, "src", "app", "admin", "admin.constant.js"));
-			assert.file(path.join(tmpDir, "src", "app", "admin", "admin.route.js"));
-		});
-	});
+//	describe("feature", function () {
+//		temp.track();
+//		var tmpDir;
+//		before(function(done) {
+//			tmpDir = temp.mkdirSync();
+//			helpers.run(path.join(__dirname, "..", "feature"))
+//				.inDir(tmpDir)
+//				.withArguments("src/app/admin module1 admin")
+//				.withGenerators([
+//					path.join(__dirname, "..", "base3"),
+//					path.join(__dirname, "..", "module"),
+//					path.join(__dirname, "..", "constant"),
+//					path.join(__dirname, "..", "route-ui")
+//				])
+//				.on("end", done);
+//		});
+//		
+//		it("creates expected files", function () {
+//			assert.file(path.join(tmpDir, "src", "app", "admin", "admin.module.js"));
+//			assert.file(path.join(tmpDir, "src", "app", "admin", "admin.constant.js"));
+//			assert.file(path.join(tmpDir, "src", "app", "admin", "admin.route.js"));
+//		});
+//	});
 	
 	// angular-nmi:vc
-	describe("vc", function () {
-		temp.track();
-		var tmpDir;
-		before(function(done) {
-			tmpDir = temp.mkdirSync();
-			helpers.run(path.join(__dirname, "..", "vc"))
-			.inDir(tmpDir)
-			.withArguments("src/app/admin app.admin admin")
-			.withGenerators([
-				path.join(__dirname, "..", "base"),
-				path.join(__dirname, "..", "view"),
-				path.join(__dirname, "..", "controller")
-			])
-			.on("end", done);
-		});
-		
-		it("creates expected files and content", function () {
-			assert.file(path.join(tmpDir, "src", "app", "admin", "admin.controller.js"));
-			assert.file(path.join(tmpDir, "src", "app", "admin", "admin.html"));
-		});
-	});
+//	describe("vc", function () {
+//		temp.track();
+//		var tmpDir;
+//		before(function(done) {
+//			tmpDir = temp.mkdirSync();
+//			helpers.run(path.join(__dirname, "..", "vc"))
+//				.inDir(tmpDir)
+//				.withArguments("src/app/admin app.admin admin")
+//				.withGenerators([
+//					path.join(__dirname, "..", "base3"),
+//					path.join(__dirname, "..", "view"),
+//					path.join(__dirname, "..", "controller")
+//				])
+//				.on("end", done);
+//		});
+//		
+//		it("creates expected files", function () {
+//			assert.file(path.join(tmpDir, "src", "app", "admin", "admin.controller.js"));
+//			assert.file(path.join(tmpDir, "src", "app", "admin", "admin.html"));
+//		});
+//	});
 	
 });

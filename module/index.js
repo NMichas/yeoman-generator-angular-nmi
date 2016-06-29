@@ -14,7 +14,7 @@ module.exports = generators.Base.extend({
 	
 	initializing: function() {
 		// Call the base-generator to perform prompting and checking.
-		this.composeWith("angular-nmi:base", {
+		this.composeWith("angular-nmi:base2", {
 			args : this.arguments 
 		});
 	},
@@ -26,7 +26,6 @@ module.exports = generators.Base.extend({
 			this.config.get("resourcePath") + ".module.js", 
 			{
 				resourceName : this.config.get("resourceName"),
-				moduleName : this.config.get("resourceModule"),
 				
 				module_module: i18n.__("module_module")
 			}

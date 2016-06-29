@@ -12,7 +12,8 @@
 
 	/** @ngInject */
 	function routerConfig($stateProvider) { // eslint-disable-line no-unused-vars
-//		$stateProvider.state("foo", {
+		$stateProvider.state("foo", {
+//			url : "/foo",
 //			controller : "FooController",
 //			controllerAs :  "foo",
 //			templateUrl : "bar.html"

@@ -7,7 +7,7 @@
 	"use strict";
 
 	angular // eslint-disable-line no-undef
-		.module("<%=moduleName%>", [
+		.module("<%=resourceName%>", [
 
 		]);
 })();

@@ -28,10 +28,6 @@ npm install -g yo
 npm install -g generator-angular-nmi
 ```
 
-## Prerequisites
-* This generator expects your code to be under `src/app` and will output all
-its content under `{current_dir}/src/app`.
-
 ## Internationalisation
 All command-line output as well as all comments within the generated files can be
 customised by changing the lexicon file(s) under `app/locales`. The generator will
@@ -58,119 +54,88 @@ Provides usage instructions.
 
 #### `yo angular-nmi:constant`
 __Generates__: An AngularJS Constant.  
-__Arguments__: The resource name to be generated, following a {module}.{resource}
-style, e.g. app.admin.foo.  
-__Flags__: --root, creates a root-level resource (see examples).  
+__Arguments__: Output folder name, module name, constant name.    
 __Template__: [constant.tpl.js](templates/constant.tpl.js)
 
 ##### Examples
 | Generator | Generates file | Module's name | Resource's name |
 | --------- | -------------- | ------------- | --------------- |
-| `yo angular-nmi:constant app --root` | src/app/app.constant.js | app | AppConstant |
-| `yo angular-nmi:constant app.admin.system` | src/app/admin/system.constant.js | app.admin | SystemConstant |
-| `yo angular-nmi:constant app.admin.storage-paths` | src/app/admin/storage-paths.constant.js | app.admin | StoragePathsConstant |
-| `yo angular-nmi:constant app.admin.storage_paths` | src/app/admin/storage_paths.constant.js | app.admin | StoragePathsConstant |
+| `yo angular-nmi:constant src/app module1 system` | src/app/system.constant.js | module1 | SystemConstant |
 
 
 #### `yo angular-nmi:controller`
 __Generates__: An AngularJS Controller.  
-__Arguments__: The resource name to be generated, following a {module}.{resource}
-style, e.g. app.admin.foo.  
-__Flags__: --root, creates a root-level resource (see examples).  
+__Arguments__: Output folder name, module name, controller name.  
 __Template__: [controller.tpl.js](templates/controller.tpl.js)
 
 ##### Examples
 | Generator | Generates file | Module's name | Resource's name |
 | --------- | -------------- | ------------- | --------------- |
-| `yo angular-nmi:controller app --root` | src/app/app.controller.js | app | AppController |
-| `yo angular-nmi:controller app.admin.users` | src/app/admin/users.controller.js | app.admin | UsersController |
-| `yo angular-nmi:controller app.admin.storage-paths` | src/app/storage-paths.controller.js | app | StoragePathsController |
-| `yo angular-nmi:controller app.admin.storage_paths` | src/app/storage_paths.controller.js | app | StoragePathsController |
+| `yo angular-nmi:controller src/app module1 system` | src/app/system.controller.js | module1 | SystemController |
 
 
 #### `yo angular-nmi:factory`
 __Generates__: An AngularJS Factory.  
-__Arguments__: The resource name to be generated, following a {module}.{resource}
-style, e.g. app.admin.foo.  
-__Flags__: --root, creates a root-level resource (see examples).  
+__Arguments__: Output folder name, module name, factory/service name.    
 __Template__: [factory.tpl.js](templates/factory.tpl.js)
 
 ##### Examples
 | Generator | Generates file | Module's name | Resource's name |
 | --------- | -------------- | ------------- | --------------- |
-| `yo angular-nmi:factory app --root` | src/app/app.service.js | app | AppService |
-| `yo angular-nmi:factory app.admin.contacts` | src/app/admin/contacts.service.js | app.admin | ContactsService |
-| `yo angular-nmi:factory app.admin.storage-paths` | src/app/admin/storage-paths.service.js | app | StoragePathsService |
-| `yo angular-nmi:factory app.admin.storage_paths` | src/app/admin/storage_paths.service.js | app | StoragePathsService |
+| `yo angular-nmi:factory src/app module1 control` | src/app/control.service.js | app | ControlService |
 
 
 #### `yo angular-nmi:module`
 __Generates__: An AngularJS Module.  
-__Arguments__: The name of the Module to create.  
-__Flags__: --root, creates a root-level resource (see examples).  
+__Arguments__: Output folder name, module name.    
 __Template__: [module.tpl.js](templates/module.tpl.js)
 
 ##### Examples
 | Generator | Generates file | Module's name |
 | --------- | -------------- | ------------- |
 | `yo angular-nmi:module app --root` | src/app/app.module.js | app |
-| `yo angular-nmi:module app.admin` | src/app/admin/admin.module.js | app.admin |
-| `yo angular-nmi:module app.admin.system` | src/app/admin/system/system.module.js | app.admin.system |
-| `yo angular-nmi:module app.admin.large-accounts` | src/app/admin/large-accounts/large-accounts.module.js | app.admin.large-accounts |
 
 
 #### `yo angular-nmi:route-ui`
 __Generates__: An AngularJS Route configuration using [AngularUI Router](https://github.com/angular-ui/ui-router).  
-__Arguments__: The resource name to be generated, following a {module}.{resource}
-style, e.g. app.admin.foo.  
-__Flags__: --root, creates a root-level resource (see examples).  
+__Arguments__: Output folder name, module name, routes name.  
 __Template__: [route-ui.tpl.js](templates/route-ui.tpl.js)
 
 ##### Examples
 | Generator | Generates file | Module's name |
 | --------- | -------------- | ------------- |
-| `yo angular-nmi:route-ui app --root` | src/app/app.route.js | app |
-| `yo angular-nmi:route-ui app.admin.admin` | src/app/admin/admin.route.js | app.admin |
-| `yo angular-nmi:route-ui app.admin.restricted` | src/app/admin/restricted.route.js | app.admin |
-| `yo angular-nmi:route-ui app.contacts.my-contacts` | src/app/contacts/my-contacts.route.js | app.contacts |
+| `yo angular-nmi:route-ui src/app module2 app` | src/app/app.route.js | module2 |
 
 
 #### `yo angular-nmi:view`
 __Generates__: An HTML view.  
-__Arguments__: The resource name to be generated, following a {module}.{resource}
-style, e.g. app.admin.foo.  
-__Flags__: --root, creates a root-level resource (see examples).  
+__Arguments__: Output folder name, view name.      
 __Template__: [view.tpl.html](templates/view.tpl.html)
 
 ##### Examples
 | Generator | Generates file |
 | --------- | -------------- |
-| `yo angular-nmi:view app --root` | src/app/app.html |
-| `yo angular-nmi:view app.admin.index ` | src/app/admin/index.html |
+| `yo angular-nmi:view src/app edit` | src/app/edit.html |
 
 
 ### Group generators
 #### `yo angular-nmi:feature`
-__Generates__: A Module, a Constant, and a Route.  
-__Flags__: --root, creates a root-level resource (see examples).  
-__Arguments__: The name of the Module, Constant, and Route to generate.  
+__Generates__: A Module, a Constant, and a Route.    
+__Arguments__: Output folder name, module name, resources name.  
 __Templates__: [module.tpl.js](templates/module.tpl.js), [constant.tpl.js](templates/constant.tpl.js), [route-ui.tpl.js](templates/route-ui.tpl.js)
 
 ##### Examples
 | Generator | Generates file | Module's name |
 | --------- | -------------- | ------------- |
-| `yo angular-nmi:feature app --root` | src/app/app.module.js, src/app/app.constant.js, src/app/app.route.js | app |
-| `yo angular-nmi:feature app.contacts` | src/app/contacts/contacts.module.js, src/app/contacts/contacts.constant.js, src/app/contacts/contacts.route.js | app.contacts |
+| `yo angular-nmi:feature src/app/inventory inventory inventory` | src/app/inventory/inventory.module.js, src/app/inventory/inventory.constant.js, src/app/inventory/inventory.route.js | inventory |
 
 
 #### `yo angular-nmi:vc`
 __Generates__: A View and a Controller.  
-__Arguments__: The name of the View and Controller to generate.  
-__Flags__: --root, creates a root-level resource (see examples).  
+__Arguments__: Output folder name, module name, resources name.    
 __Templates__: [view.tpl.html](templates/view.tpl.html), [controller.tpl.js](templates/controller.tpl.js)
 
 ##### Examples
 | Generator | Generates file | Module's name |
 | --------- | -------------- | ------------- |
-| `yo angular-nmi:vc app --root` | src/app/app.html, src/app/app.controller.js | app |
-| `yo angular-nmi:vc app.contacts` | src/app/contacts/contacts.html, src/app/contacts/contacts.controller.js | app.contacts |
+| `yo angular-nmi:vc src/app app export` | src/app/export.html, src/app/export.controller.js | app |
