@@ -1,6 +1,6 @@
 {
   "name": "generator-angular-nmi",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Yeoman generator for various AngularJS resources to encourage a common style within a project.",
   "keywords": [
     "yeoman-generator",
@@ -32,7 +32,6 @@
     "constant",
     "controller",
     "factory",
-    "feature",
     "module",
     "route-ui",
     "templates",

@@ -20,10 +20,14 @@ module.exports = generators.Base.extend({
 				type : String,
 				required : true
 			});
+		}
+		if (arguments["0"].length > 1) {
 			this.argument("resourceModule", {
 				type : String,
 				required : true
 			});
+		}
+		if (arguments["0"].length > 2) {
 			this.argument("resourceName", {
 				type : String,
 				required : true

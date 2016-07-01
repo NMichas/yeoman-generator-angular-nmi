@@ -1,9 +1,6 @@
 "use strict";
 
 var generators = require("yeoman-generator");
-var path = require("path");
-var generatorRoot = path.join(__dirname, "..", "app");
-var util = require(path.join(generatorRoot, "lib", "util"));
 
 module.exports = generators.Base.extend({
 	constructor : function() {

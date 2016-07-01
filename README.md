@@ -119,17 +119,6 @@ __Template__: [view.tpl.html](templates/view.tpl.html)
 
 
 ### Group generators
-#### `yo angular-nmi:feature`
-__Generates__: A Module, a Constant, and a Route.    
-__Arguments__: Output folder name, module name, resources name.  
-__Templates__: [module.tpl.js](templates/module.tpl.js), [constant.tpl.js](templates/constant.tpl.js), [route-ui.tpl.js](templates/route-ui.tpl.js)
-
-##### Examples
-| Generator | Generates file | Module's name |
-| --------- | -------------- | ------------- |
-| `yo angular-nmi:feature src/app/inventory inventory inventory` | src/app/inventory/inventory.module.js, src/app/inventory/inventory.constant.js, src/app/inventory/inventory.route.js | inventory |
-
-
 #### `yo angular-nmi:vc`
 __Generates__: A View and a Controller.  
 __Arguments__: Output folder name, module name, resources name.    

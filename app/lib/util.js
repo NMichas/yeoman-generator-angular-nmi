@@ -7,8 +7,6 @@ var osLocale = require('os-locale');
 
 module.exports = {
 	appSourceRoot : path.join("src", "app"),
-	dirExists : dirExists,
-	toPath : toPath,
 	resourceNameForJS : resourceNameForJS,
 	setupLexicon : setupLexicon
 }
@@ -21,30 +19,6 @@ function setupLexicon(localesPath) {
 		updateFiles : false,
 	});
 	i18n.setLocale(osLocale.sync());
-}
-
-/**
- * Checks if a given path is a directory.
- * 
- * @param path
- *            The path to check.
- * @returns {Boolean}
- */
-function dirExists(path) {
-	try {
-		var isDir = fs.statSync(path).isDirectory();
-		if (!isDir) {
-			return false;
-		} else {
-			return true;
-		}
-	} catch (err) {
-		return false;
-	}
-}
-
-function toPath(src) {
-	return src.replace(/\./g, path.sep);
 }
 
 /**

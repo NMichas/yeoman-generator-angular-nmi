@@ -8,11 +8,10 @@ var util = require(path.join(generatorRoot, "lib", "util"));
 var colog = require("colog");
 var appRoot = path.join(".", util.appSourceRoot);
 
-//A base generator to check arguments and prompt for missing ones.
-//2-args version.
+// A base generator to check arguments and prompt for missing ones.
+// 2-args version.
 module.exports = generators.Base.extend({
 	constructor : function() {
-		
 		generators.Base.apply(this, arguments);
 		
 		// Define CLI arguments.
@@ -21,6 +20,8 @@ module.exports = generators.Base.extend({
 				type : String,
 				required : true
 			});
+		}
+		if (arguments["0"].length > 1) {
 			this.argument("resourceName", {
 				type : String,
 				required : true

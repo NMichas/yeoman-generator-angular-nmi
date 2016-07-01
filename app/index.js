@@ -24,7 +24,6 @@ module.exports = generators.Base.extend({
 			+ "\t yo angular-nmi:route-ui\t" + i18n.__("creates_a_new_route_configuration") + "\n"
 			+ "\t yo angular-nmi:view\t\t" + i18n.__("creates_a_new_html_view") + "\n"
 			+ "\n"
-			+ "\t yo angular-nmi:feature\t\t" + i18n.__("creates_a_new_module_constant_and_route") + "\n"
 			+ "\t yo angular-nmi:vc\t\t" + i18n.__("creates_a_new_html_view_and_controller") + "\n"
 		);
 	}

@@ -2,10 +2,6 @@
 
 var generators = require("yeoman-generator");
 var i18n = require("i18n");
-var path = require("path");
-var generatorRoot = path.join(__dirname, "..", "app");
-var util = require(path.join(generatorRoot, "lib", "util"));
-var appRoot = path.join(".", util.appSourceRoot);
 
 module.exports = generators.Base.extend({
 	constructor: function () {
@@ -23,13 +19,12 @@ module.exports = generators.Base.extend({
 		// Create .js.
 		this.fs.copyTpl(
 			this.templatePath("../../templates/module.tpl.js"),
-			this.config.get("resourcePath") + ".module.js", 
-			{
+			this.destinationPath(this.config.get("resourcePath") + ".module.js"), {
 				resourceName : this.config.get("resourceName"),
 				
 				module_module: i18n.__("module_module")
 			}
-		);
+		);		
 	}
 	
 });
