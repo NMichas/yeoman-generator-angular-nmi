@@ -45,6 +45,9 @@ Locale/language discovery takes place using the
 looks into the value defined by any of
 `env.LC_ALL, env.LC_MESSAGES, env.LANG,env.LANGUAGE` (in that order).
 
+## Testing and coverage report
+`istanbul cover _mocha -- -R spec`
+
 ## Run
 #### `yo angular-nmi`
 Provides usage instructions.
