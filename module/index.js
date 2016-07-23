@@ -10,17 +10,18 @@ module.exports = generators.Base.extend({
 	
 	initializing: function() {
 		// Call the base-generator to perform prompting and checking.
-		this.composeWith("angular-nmi:base2", {
+		this.composeWith("angular-nmi:base3", {
 			args : this.arguments 
 		});
 	},
 	
 	writing: function() {
 		// Create .js.
+		var filename = this.config.get("resourcePath").substring(this.config.get("resourcePath").lastIndexOf(".") + 1);
 		this.fs.copyTpl(
 			this.templatePath("../../templates/module.tpl.js"),
-			this.destinationPath(this.config.get("resourcePath") + ".module.js"), {
-				resourceName : this.config.get("resourceName"),
+			this.destinationPath(filename + ".module.js"), {
+				resourceName : this.config.get("resourceModule"),
 				
 				module_module: i18n.__("module_module")
 			}

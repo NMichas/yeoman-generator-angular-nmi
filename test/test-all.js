@@ -109,8 +109,8 @@ describe("angular-nmi", function() {
 			tmpDir = temp.mkdirSync();
 			helpers.run(path.join(__dirname, "..", "module"))
 				.inDir(tmpDir)
-				.withArguments("src/app/admin admin")
-				.withGenerators([path.join(__dirname, "..", "base2")])
+				.withArguments("src/app/admin app.admin admin")
+				.withGenerators([path.join(__dirname, "..", "base3")])
 				.on("end", done);
 		});
 		
@@ -121,7 +121,7 @@ describe("angular-nmi", function() {
 		
 		it("creates expectedcontent", function () {
 			var targetFile = path.join(tmpDir, "src", "app", "admin", "admin.module.js");
-			assert.fileContent(targetFile, ".module(\"admin\"");
+			assert.fileContent(targetFile, ".module(\"app.admin\"");
 		});
 	});
 	

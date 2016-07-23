@@ -87,13 +87,13 @@ __Template__: [factory.tpl.js](templates/factory.tpl.js)
 
 #### `yo angular-nmi:module`
 __Generates__: An AngularJS Module.  
-__Arguments__: Output folder name, module name.    
+__Arguments__: Output folder name, module name, module filename.  
 __Template__: [module.tpl.js](templates/module.tpl.js)
 
 ##### Examples
-| Generator | Generates file | Module's name |
-| --------- | -------------- | ------------- |
-| `yo angular-nmi:module app --root` | src/app/app.module.js | app |
+| Generator | Generates file | Module's name | Resource's name |
+| --------- | -------------- | ------------- | --------------- |
+| `yo angular-nmi:module src/app/foo app.foo.suppliers suppliers` | src/app/foo/suppliers.module.js | app.foo.suppliers |
 
 
 #### `yo angular-nmi:route-ui`
