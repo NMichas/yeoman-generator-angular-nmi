@@ -22,10 +22,11 @@ module.exports = generators.Base.extend({
 			this.templatePath("../../templates/module.tpl.js"),
 			this.destinationPath(filename + ".module.js"), {
 				resourceName : this.config.get("resourceModule"),
+				filename: this.config.get("resourceName") + ".module.js",
 				
 				module_module: i18n.__("module_module")
 			}
-		);		
+		);
 	}
-	
+
 });

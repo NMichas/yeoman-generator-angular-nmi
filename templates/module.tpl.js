@@ -1,6 +1,6 @@
 /**
  * @ngdoc overview
- * @name <%=resourceName%>.module.js
+ * @name <%=filename%>
  * @description <%=resourceName%> <%=module_module%>
  */
 (function() {
