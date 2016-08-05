@@ -17,6 +17,6 @@
 //			controller : "FooController",
 //			controllerAs :  "foo",
 //			templateUrl : "bar.html"
-//		});
+		});
 	}
 })();
