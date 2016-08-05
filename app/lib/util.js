@@ -30,7 +30,9 @@ function setupLexicon(localesPath) {
  * @returns
  */
 function resourceNameForJS(res) {
-	return capitaliseFirst(res.replace(/([-_][a-z])/g));
+	return capitaliseFirst(res.replace(/([-_][a-z])/g, function($1) {
+		return $1.toUpperCase().replace(/[-_]/, '');
+	}));
 }
 
 

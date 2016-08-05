@@ -75,6 +75,29 @@ describe("angular-nmi", function() {
 			assert.fileContent(targetFile, ".controller(\"SystemController\", SystemController);");
 		});
 	});
+	describe("controller-with-dash", function () {
+		temp.track();
+		var tmpDir;
+		before(function(done) {
+			tmpDir = temp.mkdirSync();
+			helpers.run(path.join(__dirname, "..", "controller"))
+			.inDir(tmpDir)
+			.withArguments("src/app/admin app.admin system-check")
+			.withGenerators([path.join(__dirname, "..", "base3")])
+			.on("end", done);
+		});
+		
+		it("creates expected files", function () {
+			var targetFile = path.join(tmpDir, "src", "app", "admin", "system-check.controller.js");
+			assert.file(targetFile);
+		});
+		
+		it("creates expected content", function () {
+			var targetFile = path.join(tmpDir, "src", "app", "admin", "system-check.controller.js");
+			assert.fileContent(targetFile, ".module(\"app.admin\")");
+			assert.fileContent(targetFile, ".controller(\"SystemCheckController\", SystemCheckController);");
+		});
+	});
 	
 	// angular-nmi:factory
 	describe("factory", function () {
